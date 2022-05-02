@@ -1,0 +1,132 @@
+<!--STRING INTERPOLATION-->
+<h3>{{title}}</h3>
+<h2>{{course}}</h2>
+
+<!--PROPERTY BINDING-->
+<img [src]="image" style="height:100px;width:100px;">
+<br>
+<br>
+<br>
+<br>
+<!--EVENT BINDING-->
+<button (click)="onClick()" >Click Me</button>
+<br>
+<button (click)="onClick1()" >CLICK Me</button>
+<br>
+<br>
+<br>
+<br>
+<!--TWO-WAY BINDING-->
+Enter your Name:
+<!--ngModel->include FormsModule-->
+<input [(ngModel)]="info" type="text">
+<p>{{info}}</p>
+<h3>{{info}}</h3>
+  
+<!--*ngFor-->
+<ul>
+    <li *ngFor="let place of places" [style.color]="'red'">
+      {{ place.name }}
+    </li>
+  </ul>
+
+  <!--Hide Movie List using Event Binding-->
+<button (click)="hideList()">
+    Click to Hide List
+</button>
+
+<!--*ngIf is checking the value of isvisible property-->
+<ul *ngIf="isVisible" [style.color]="'green'">
+    <li *ngFor="let item of places">
+      {{ item.name }} 
+    </li>
+  </ul>
+
+  <!--PIPES-->
+<h3>
+
+    Date: {{ dateToday  }} <br>
+
+    Date Pipe: {{ dateToday | date | lowercase}}<br>
+
+    Date Pipe: {{ dateToday | date: 'short' | lowercase}} <br>
+
+    Name: {{ name | uppercase}} <br>
+
+    Name: {{ name | slice:8 | uppercase}}<br>
+
+    Currency: {{amount | currency:'INR'}}
+
+</h3>
+<br>
+<br>
+<!--STYLE BINDING-->
+<p [style.color]="'yellow'">yellow COLOR</p>
+<p [style.background-color]="'pink'">BACKGROUND COLOR AS pink</p>
+<button [style.border]="'2px solid blue'">Save</button>
+<br>
+<br>
+<button [style.color]="status=='error1' ? 'green': 'blue'">Button 1</button>
+<br>
+<br> 
+<button [style.color]="status=='error' ? 'green': 'blue'">Button 1</button>
+<br>
+<br> 
+<button [style.color]="getColor()">Button 2</button> 
+<br>
+<br>
+<button [style.font-size.px]="'24'" >Large Button</button>
+<br>
+<br>
+
+<!--MULTIPLE STYLES-->
+<p [style.color]="getColor()" 
+   [style.font-size.px]="'20'"      
+   [style.background-color]="status=='error1' ? 'red': 'deeppink'">
+   paragraph with multiple styles
+</p>
+
+<ul>
+    <li *ngFor="let course of courses" [style.color]="course.color">
+      {{ course.name }}
+    </li>
+  </ul>
+  <br>
+  <li *ngFor="let course of courses" 
+  [ngStyle]="{'color': course.color, 'font-size':'20px'}"> 
+    {{ course.name }}
+  </li>
+<br>
+  <!--*ngSwitch-->
+  <ul [ngSwitch]="superhero" [ngStyle]="{'color':'purple','font-size':'24px'}">
+    <li *ngSwitchCase="'Groot'">Groot</li>
+    <li *ngSwitchCase="'Ironman'">Ironman</li>
+    <li *ngSwitchCase="'Hulk'">Hulk</li>
+    <li *ngSwitchCase="'Thor'">Thor</li>
+    <li *ngSwitchCase="'Spiderman'">Spiderman</li>
+    <li *ngSwitchDefault>Batman</li>
+  </ul>
+
+  <br>
+  <div *ngFor="let car of Cars" [ngSwitch]="car.color" style="margin-left: 100px;font-size: larger;">
+    <div *ngSwitchCase="'blue'"
+        class="blue">
+      {{ car.name }} {{ car.average }} ({{ car.color }})
+    </div>
+    <div *ngSwitchCase="'yellow'"
+        class="yellow">
+      {{ car.name }} ({{ car.color }})
+    </div>
+    <div *ngSwitchCase="'silver'"
+        class="silver">
+      {{ car.name }} ({{ car.color }})
+    </div>
+    <div *ngSwitchCase="'red'"
+        class="red">
+      {{ car.name }} ({{ car.color }})
+    </div>
+    <div *ngSwitchDefault
+        class="text-warning">
+      {{ car.name }} ({{ car.color }})
+    </div>
+  </div>
