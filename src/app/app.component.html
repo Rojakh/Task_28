@@ -1,14 +1,15 @@
 <div class="container">
-    <h1 class="heading"><strong>Services </strong>Demo</h1>
+    <h1 class="heading"><strong>Employee Details</strong></h1>
   
     <button type="button" (click)="getEmployeeDetails()">View Employee Details</button>
     <hr>
       <!--ngStyle-->
-     <div>Choose Theme Color:</div><input [(ngModel)]="color" /> 
+     <div>Choose your color for heading</div><input [(ngModel)]="color" /> 
      <div class='table-responsive'>
-            <table class='table'>
+            <table class='table'style="background-color: lightgreen">
                 <thead>
                     <tr>
+                        
                         <th [ngStyle]="{'color': color}">Employee_ID</th>
                         <th [ngStyle]="{'color': color}">Employee_Name</th>
                         <th [ngStyle]="{'color': color}">Employee_Salary</th>
