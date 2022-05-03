@@ -1,2 +1,32 @@
-<app-demo1></app-demo1>
-<router-outlet></router-outlet>
+<div class="container">
+    <h1 class="heading"><strong>Services </strong>Demo</h1>
+  
+    <button type="button" (click)="getEmployeeDetails()">View Employee Details</button>
+    <hr>
+      <!--ngStyle-->
+     <div>Choose Theme Color:</div><input [(ngModel)]="color" /> 
+     <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th [ngStyle]="{'color': color}">Employee_ID</th>
+                        <th [ngStyle]="{'color': color}">Employee_Name</th>
+                        <th [ngStyle]="{'color': color}">Employee_Salary</th>
+                        <th [ngStyle]="{'color': color}">Employee_Designation</th>
+                        <th [ngStyle]="{'color': color}">Employee_Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--*ngFor Directive - Looping through the policies-->
+                    <!--policies is the array holding all the polcies accessed from the PolicyService-->
+                    <tr *ngFor="let employee of employees;">
+                        <td>{{employee.employeeID}}</td>
+                        <td>{{employee.employeename}}</td>
+                        <td>{{employee.employeerate}}</td>
+                        <td>{{employee.employeedesignation}}</td>
+                        <td>{{employee.employeeaddress}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  </div>
